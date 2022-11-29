@@ -1,47 +1,115 @@
-const mario = document.querySelector('.mario');
-const pipe = document.querySelector('.pipe');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-const jump = () => {
-    mario.classList.add('jump');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 
-    setTimeout(() => {
-        mario.classList.remove('jump');
-
-
-    }, 500)
 }
 
-const loop = setInterval(() => {
-
-    console.log(loop)
-    const pipePosition = pipe.offsetLeft;
-    const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
-
-    if (pipePosition <= 100 && pipePosition > 0 && marioPosition < 40) {
-
-        pipe.style.animation = 'none';
-        pipe.style.left = `${pipePosition}px`
-
-        mario.style.animation = 'none';
-        mario.style.bottom = `${marioPosition}px`
-
-        mario.src = './images/game-over.png';
-        mario.style.width = '75px';
-        mario.style.marginLeft = '50px';
 
 
-        clearInterval(loop);
+body {
+    background-color: rgb(29, 175, 0);
+    color: rgb(12, 90, 24);
+    font-family: 'Press Start 2P', cursive;
+    align-items: center;
+}
 
-        // alert('Game Over')
+.game-board {
+    width: 100%;
+    height: 300px;
+    border-bottom: 15px solid rgb(29, 175, 0);
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(#87ceeb, #E0F6FF);
+    /* esconde oq está pra fora do game-board*/
+}
 
-        var sair = confirm("Você perdeu! Deseja recomeçar?"); // solicita confirmação
-        if (sair) {
-            location.reload()
-            // sai da repetição
-        }
+
+.pipe {
+    position: absolute;
+    bottom: 0;
+    width: 40px;
+    right: -80px;
+    animation: pipe-animation 1s infinite linear;
+
+}
+
+.mario {
+    width: 130px;
+    position: absolute;
+    bottom: 0;
+
+    /*propriedade ease-out para "suavizar" a animação */
+
+}
+
+.jump {
+    animation: jump 500ms ease-out;
+
+}
+
+
+.clouds {
+    position: absolute;
+    width: 350px;
+    animation: clouds-animation 15s infinite linear;
+}
+
+@keyframes pipe-animation {
+    from {
+        right: 0;
     }
 
-}, 10)
+    to {
+        right: 100%;
+    }
+}
 
-document.addEventListener('keydown', jump);
-document.addEventListener('touchstart', jump);
+@keyframes jump {
+    0% {
+        bottom: 0;
+    }
+
+    50% {
+        bottom: 140px;
+    }
+
+    55% {
+        bottom: 150px;
+    }
+
+    58% {
+        bottom: 160px;
+    }
+
+    60% {
+        bottom: 170px;
+    }
+
+    65% {
+        bottom: 180px;
+    }
+
+    70% {
+        bottom: 150px;
+    }
+
+    100% {
+        bottom: 0;
+    }
+}
+
+
+@keyframes clouds-animation {
+    from {
+        right: -550px;
+
+    }
+
+    to {
+        right: 100%;
+    }
+}
