@@ -13,10 +13,11 @@ body {
     background-color: rgb(29, 175, 0);
     color: rgb(12, 90, 24);
     font-family: 'Press Start 2P', cursive;
+    align-items: center;
 }
 
 .game-board {
-    width: 100%;
+    width: 40%;
     height: 300px;
     border-bottom: 15px solid rgb(29, 175, 0);
     margin: 0 auto;
@@ -30,14 +31,14 @@ body {
 .pipe {
     position: absolute;
     bottom: 0;
-    width: 68px;
+    width: 40px;
     right: -80px;
-    animation: pipe-animation 2s infinite linear;
+    animation: pipe-animation 1s infinite linear;
 
 }
 
 .mario {
-    width: 150px;
+    width: 130px;
     position: absolute;
     bottom: 0;
 
@@ -81,6 +82,14 @@ body {
     }
 
     50% {
+        bottom: 150px;
+    }
+
+    55% {
+        bottom: 150px;
+    }
+
+    58% {
         bottom: 150px;
     }
 
